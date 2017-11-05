@@ -1,6 +1,8 @@
 import sys
 
 def merging(first,second,third):
+    # solution 1
+    # generalise it into len(third string) = len(first+second)
     if len(first)==len(second)+len(third):
         return 0 if execute_merge(second,third,first) else -1
     elif len(second)==len(first)+len(third):
@@ -10,23 +12,28 @@ def merging(first,second,third):
     else:
         return -1
 
-def execute_merge(first,second,third,last_index=0):
-    # check if third can come from [first and second merged]
-    # return boolean
-    ret = False
-    if len(third)==len(first):
-        if third==first:
+
+
+def try_execute(first,second,third):
+    last_index=0
+    while first!='':
+        try:
+            char = first[0]
+            first=first[1:]
+            index = third.index(char)
+            third=third[:index]+third[index+1:]
+        except:
+            return False
+    else:
+        if third==second:
             return True
         else:
             return False
-    if second[-1] in third:
-        for s in range(len(third)):
-            if third[s] == second[-1]:
-                ret = ret or execute_merge(first,second[:-1],third[:s]+third[s+1:],s)
-    else:
-        return False
 
-    return ret
+def execute_merge(first,second,third):
+    # solution 1
+    return try_execute(first,second,third) or try_execute(second,first,third)
+
 
 
 
