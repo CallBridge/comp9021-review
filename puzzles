@@ -1,0 +1,6 @@
+1. use os.open(), I cannot open file directly like what I do in dos system
+   some guys online seuugested using subprocess.xxx()
+   but it does not work as well.
+   By the way, how can I fill the pdf full-automatically?
+   I mean, if it is no necessay to have a autogui effect
+   ---- Considering about  the pdf autogui and file in week 2
